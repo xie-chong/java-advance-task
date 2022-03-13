@@ -15,7 +15,7 @@ Serial GC 的对应 JVM 参数是：
 ```
 -XX:+UseConcMarkSweepGC -XX:+UseParNewGC
 ```
-* **CMS（Concurrent Mark Sweep） GC**，基于标记 - 清除（Mark-Sweep）算法，设计目标是尽量减少停顿时间，但是，CMS 采用的标记 - 清除算法，存在着内存碎片化问题，所以难以避免在长时间运行等情况下发生 full GC，导致恶劣的停顿。并发（Concurrent），CMS 会占用更多 CPU 资源，并和用户线程争抢。
+* **CMS（Concurrent Mark Sweep） GC**，基于标记 - 清除（Mark-Sweep）算法，设计目标是尽量减少停顿时间，但是，CMS 采用的标记 - 清除算法，存在着内存碎片化问题，所以难以避免在长时间运行等情况下发生 full GC，导致恶劣的停顿。并发（Concurrent），CMS 会占用更多 CPU 资源，并和用户线程争抢。（6个阶段）
 
 * **Parrallel GC**，在早期 JDK 8 等版本中，它是 server 模式 JVM 的默认 GC 选择，也被称作是吞吐量优先的 GC。它的算法和 Serial GC 比较相似，尽管实现要复杂的多，其特点是新生代和老年代 GC 都是并行进行的，在常见的服务器环境中更加高效。
 开启选项是：
@@ -24,6 +24,9 @@ Serial GC 的对应 JVM 参数是：
 ```
 
 * **G1 GC** 这是一种兼顾吞吐量和停顿时间的 GC 实现，是 Oracle JDK 9 以后的默认 GC 选项。G1 可以直观的设定停顿时间的目标
+
+
+* **ZGC**，具备令人惊讶的扩展能力，支持 T bytes 级别的堆大小，并且保证绝大部分情况下，延迟都不会超过 10 ms。
 
 
 
