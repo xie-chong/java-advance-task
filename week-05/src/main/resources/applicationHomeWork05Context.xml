@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+                        http://www.springframework.org/schema/context
+                        http://www.springframework.org/schema/context/spring-context-3.2.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!--1.使用构造注入方式装配User实例 -->
+    <bean id="user1" class="chong.xie.homework05.User">
+        <constructor-arg index="0" value="柳小子"/>
+        <constructor-arg index="1" value="123456"/>
+        <constructor-arg index="2">
+            <list>
+                <value>"constructorvalue1"</value>
+                <value>"constructorvalue2"</value>
+            </list>
+        </constructor-arg>
+    </bean>
+    <!--2.使用设值注入方式装配User实例 -->
+    <bean id="user2" class="chong.xie.homework05.User">
+        <property name="username" value="子小柳"></property>
+        <property name="password" value="654321"></property>
+        <!-- 注入list集合 -->
+        <property name="list">
+            <list>
+                <value>"setlistvalue1"</value>
+                <value>"setlistvalue2"</value>
+            </list>
+        </property>
+    </bean>
+
+
+    <!-- 使用 context 命名空间 ,在配置文件中开启相应的注解处理器 -->
+    <context:annotation-config/>
+    <!--分别定义2个Bean实例  -->
+    <bean id="userService"
+          class="chong.xie.homework05.UserServiceImpl"/>
+    <bean id="userController"
+          class="chong.xie.homework05.UserController"/>
+
+
+</beans>
