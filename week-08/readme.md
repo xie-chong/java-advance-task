@@ -31,11 +31,12 @@ https://shardingsphere.apache.org/document/current/en/downloads/
 
 默认端口为3307，也可以在启动命令后指定（空格+端口号）
 
+```
 ###################
 #
 # If you want to connect to MySQL, you should manually copy MySQL driver to lib directory.
 #
 ###################
-
+```
 
 服务应用数据库的连接串修改为apache-shardingsphere-proxy对应的逻辑连接串
